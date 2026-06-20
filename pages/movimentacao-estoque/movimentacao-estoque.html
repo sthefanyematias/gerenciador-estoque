@@ -1,0 +1,57 @@
+<div class="movimentacao-container">
+    <div class="card-movimentacao">
+
+        <h2>Movimentação de Estoque</h2>
+        <p class="subtitle">Registre entradas de novos produtos ou a baixa por perdas/vendas.</p>
+
+        <div class="tab-selector">
+            <button [class.active]="tipoMovimentacao === 'Entrada'" (click)="tipoMovimentacao = 'Entrada'"
+                class="tab-button entrada">
+                Entrada (Aumento de Estoque)
+            </button>
+            <button [class.active]="tipoMovimentacao === 'Baixa'" (click)="tipoMovimentacao = 'Baixa'"
+                class="tab-button baixa">
+                Baixa (Saída de Estoque)
+            </button>
+        </div>
+
+        <form (ngSubmit)="realizarMovimentacao()">
+
+            <div class="form-group">
+                <label for="produtoId">ID do Produto:</label>
+                <input id="produtoId" type="number" placeholder="Digite o ID numérico do produto"
+                    [(ngModel)]="produtoIdInput" name="produtoIdInput" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input id="quantidade" type="number" placeholder="Quantidade a ser movimentada" [(ngModel)]="quantidade"
+                    name="quantidade" required>
+            </div>
+
+            <div *ngIf="tipoMovimentacao === 'Baixa'" class="form-group motivo-baixa">
+                <label for="motivoBaixa">Motivo da Baixa: <span class="campo-obrigatorio">*</span></label>
+                <textarea id="motivoBaixa" placeholder="Ex: Venda, perda por avaria, troca, vencimento, etc."
+                    [(ngModel)]="motivoBaixa" name="motivoBaixa" rows="3" required>
+                </textarea>
+            </div>
+
+            <button type="submit" class="btn-primary"
+                [ngClass]="{'btn-entrada': tipoMovimentacao === 'Entrada', 'btn-baixa': tipoMovimentacao === 'Baixa'}">
+                Registrar {{ tipoMovimentacao }}
+            </button>
+
+        </form>
+
+        <div *ngIf="ultimaMovimentacao" class="movimentacao-confirmacao">
+            <h3><i class="fas fa-check-circle"></i> Movimentação registrada com sucesso!</h3>
+            <p><strong>Produto:</strong> {{ ultimaMovimentacao.produtoNome }} (ID: {{ ultimaMovimentacao.produtoId }})
+            </p>
+            <p><strong>Tipo:</strong> {{ ultimaMovimentacao.tipo }}</p>
+            <p><strong>Quantidade:</strong> {{ ultimaMovimentacao.quantidade }}</p>
+            <p><strong>Data:</strong> {{ ultimaMovimentacao.data }}</p>
+            <p *ngIf="ultimaMovimentacao.motivo"><strong>Motivo da Baixa:</strong> {{ ultimaMovimentacao.motivo }}</p>
+        </div>
+
+    </div>
+</div>
