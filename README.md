@@ -1,9 +1,9 @@
 
 # Gerenciador de Estoque — Supermercado Bom Preço
 
-Aplicação web desenvolvida com Angular para gerenciamento de estoque e pessoal de um supermercado. O projeto implementa um CRUD completo com controle de acesso baseado em perfis (RBAC), autenticação com fluxo de onboarding e registro de movimentações de estoque.
+Aplicação web desenvolvida com Angular para gerenciamento de estoque e pessoal de um supermercado fictício. O projeto implementa um CRUD completo com controle de acesso baseado em perfis (RBAC), autenticação com fluxo de onboarding e registro de movimentações de estoque.
 
-Desenvolvido como trabalho de tema livre para a disciplina de Projeto Integrador — Análise e Desenvolvimento de Sistemas.
+Desenvolvido como trabalho de tema livre para a disciplina de Projeto Integrador do curso superior de Análise e Desenvolvimento de Sistemas.
 
 <br>
 
