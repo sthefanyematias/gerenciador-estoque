@@ -14,7 +14,7 @@ COPY --from=build /app/dist /app/dist
 RUN BROWSER_DIR=$(find /app/dist -name "browser" -type d | head -n 1) && \
     cp -r $BROWSER_DIR /usr/share/nginx/html_app
 
-COPY db.json /app/db.json
+COPY data/db.json /app/db.json
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
